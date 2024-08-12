@@ -1,0 +1,22 @@
+{
+	"name": "dev-club-bot",
+	"version": "1.0.0",
+	"main": "app.js",
+	"type": "module",
+	"scripts": {
+		"start": "node src/app.js",
+		"dev": "nodemon src/app.js"
+	},
+	"author": "Petr Shimbakov",
+	"license": "MIT",
+	"description": "",
+	"dependencies": {
+		"@discordjs/rest": "^2.3.0",
+		"discord-api-types": "^0.37.93",
+		"discord.js": "^14.15.3",
+		"dotenv": "^16.4.5"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.4"
+	}
+}
