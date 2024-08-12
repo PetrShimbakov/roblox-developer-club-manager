@@ -103,6 +103,12 @@ const removeAllData = async userId => {
 	});
 };
 
+const getNameSync = userId => {
+	const nameData = JSON.parse(fs.readFileSync(filePaths.names))[userId];
+	if (nameData) return nameData;
+	else return undefined;
+};
+
 const getAllData = async userId => {
 	const data = {};
 
@@ -131,4 +137,4 @@ const getAllData = async userId => {
 	return data;
 };
 
-export { addData, removeData, removeAllData, getAllData };
+export { addData, removeData, removeAllData, getAllData, getNameSync };

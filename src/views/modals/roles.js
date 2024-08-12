@@ -1,7 +1,13 @@
 import { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
 import errorMessages from "../messages/error-messages.js";
+import { getNameSync } from "../../models/roles-data.js";
 
 const modals = {};
+
+const setDefaultName = (userId, input) => {
+	const name = getNameSync(userId);
+	if (name) input.setValue(name);
+};
 
 modals.builderRole = userId => {
 	const modal = new ModalBuilder({
@@ -34,6 +40,8 @@ modals.builderRole = userId => {
 		new ActionRowBuilder().addComponents(yearsExperienceInput),
 		new ActionRowBuilder().addComponents(monthsExperienceInput)
 	);
+
+	setDefaultName(userId, nameInput);
 
 	return modal;
 };
@@ -70,6 +78,8 @@ modals.modelerRole = userId => {
 		new ActionRowBuilder().addComponents(monthsExperienceInput)
 	);
 
+	setDefaultName(userId, nameInput);
+
 	return modal;
 };
 
@@ -105,6 +115,8 @@ modals.scripterRole = userId => {
 		new ActionRowBuilder().addComponents(monthsExperienceInput)
 	);
 
+	setDefaultName(userId, nameInput);
+
 	return modal;
 };
 
@@ -139,6 +151,8 @@ modals.audioSpecialistRole = userId => {
 		new ActionRowBuilder().addComponents(yearsExperienceInput),
 		new ActionRowBuilder().addComponents(monthsExperienceInput)
 	);
+
+	setDefaultName(userId, nameInput);
 
 	return modal;
 };
