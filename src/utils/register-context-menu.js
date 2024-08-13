@@ -13,14 +13,12 @@ const rest = new REST().setToken(config.bot.token);
 	try {
 		console.log("Refreshing context menu commands.");
 
-		await rest.put(Routes.applicationCommands(config.bot.id, config.guildId), {
+		await rest.put(Routes.applicationGuildCommands(config.bot.id, config.guildId), {
 			body: commandData
 		});
 
 		console.log("Context menu commands was refreshed.");
 	} catch (error) {
 		console.error("[context menu register]", error);
-		if (modalInteraction.replied) modalInteraction.followUp(errorMessages.saveError);
-		else modalInteraction.editReply(errorMessages.saveError);
 	}
 })();
